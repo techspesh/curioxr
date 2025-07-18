@@ -97,7 +97,7 @@ Update the contact section with your actual details:
 - **67 Florida Counties** analyzed for deployment priority
 - **37 High Priority Counties** (55% focus on rural/Title 1)
 - **40+ Participating Colleges** creating virtual tours
-- **3M+ K-12 Students** in Florida
+- **Focusing on High School Students** in Florida
 - **63% of Schools** are Title 1 eligible
 
 ## 🔧 Technical Features
@@ -124,9 +124,9 @@ Update the contact section with your actual details:
 **Project Manager**: Desh Bagley  
 **Role**: Independent Contractor  
 **Specialization**: Educational Technology Integration  
-**Rate**: $55/hour
+**Rate**: $55-$75/hour
 
-**Project Focus**: Serving disadvantaged students in rural counties and high Title 1 schools across Florida.
+**Project Focus**: Serving students in rural counties and high Title 1 schools across Florida.
 
 ## 🗺️ Deployment Strategy
 
@@ -139,13 +139,13 @@ Focus on rural counties with high Title 1 concentrations:
 - Rural South Central counties
 
 ### Implementation Approach
-1. **College 360° Video Creation** (60-80 hours)
-2. **Meta Quest 3S Deployment** (80-100 hours)
-3. **Data Collection & Reporting** (40-50 hours)
+1. **College 360° Video Creation**
+2. **Meta Quest 3S Deployment** 
+3. **Data Collection & Reporting** 
 
 ## 📄 License
 
-This project is created for the Florida VR College Tour Project proposal. All rights reserved.
+This project is created for the Florida VR College Tour Project proposal. All rights reserved. Content created using Claude AI as a tool.
 
 ## 🔄 Version History
 
@@ -161,4 +161,4 @@ This is a project proposal website. For updates or modifications, contact the pr
 
 ---
 
-**Ready to bring virtual college experiences to Florida's most disadvantaged students.** 🎓
+**Ready to bring virtual college experiences to Florida's high school students.** 🎓
