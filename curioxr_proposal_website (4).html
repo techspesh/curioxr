@@ -1,0 +1,928 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CurioXR | Florida VR College Tour Project</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f8f9fa;
+        }
+
+        .navbar {
+            background: linear-gradient(135deg, #007bff 0%, #0056b3 100%);
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: white;
+            text-decoration: none;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-menu a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-menu a:hover {
+            color: #ffc107;
+        }
+
+        .hero {
+            background: linear-gradient(135deg, #007bff 0%, #0056b3 100%);
+            color: white;
+            padding: 8rem 0 4rem;
+            text-align: center;
+            margin-top: 70px;
+        }
+
+        .hero-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(45deg, #fff, #ffc107);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: #ffc107;
+            color: #333;
+            padding: 1rem 2rem;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(255,193,7,0.3);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255,193,7,0.4);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .section {
+            padding: 4rem 0;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: #007bff;
+        }
+
+        .overview-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .overview-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.1);
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .overview-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .overview-card h3 {
+            color: #007bff;
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .overview-card .number {
+            font-size: 3rem;
+            font-weight: bold;
+            color: #ffc107;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .activities-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .activity-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.1);
+            border-left: 5px solid #007bff;
+            transition: transform 0.3s;
+        }
+
+        .activity-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .activity-card h3 {
+            color: #007bff;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .activity-card .objective {
+            background: #e8f5e8;
+            padding: 1rem;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            border-left: 4px solid #28a745;
+        }
+
+        .activity-card .objective strong {
+            color: #155724;
+        }
+
+        .activity-card ul {
+            margin-left: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .activity-card .metrics {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 1rem;
+        }
+
+        .metric {
+            text-align: center;
+            background: #f8f9fa;
+            padding: 1rem;
+            border-radius: 8px;
+            flex: 1;
+            margin: 0 0.5rem;
+        }
+
+        .metric-value {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #007bff;
+        }
+
+        .counties-section {
+            background: white;
+            padding: 4rem 0;
+        }
+
+        .priority-legend {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            background: #f8f9fa;
+            border-radius: 25px;
+            border: 2px solid transparent;
+        }
+
+        .legend-item.high {
+            border-color: #28a745;
+        }
+
+        .legend-item.medium {
+            border-color: #ffc107;
+        }
+
+        .legend-item.low {
+            border-color: #6c757d;
+        }
+
+        .legend-color {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+        }
+
+        .legend-color.high {
+            background: #28a745;
+        }
+
+        .legend-color.medium {
+            background: #ffc107;
+        }
+
+        .legend-color.low {
+            background: #6c757d;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .stat-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+        .stat-card .number {
+            font-size: 3rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-card .number.high {
+            color: #28a745;
+        }
+
+        .stat-card .number.medium {
+            color: #ffc107;
+        }
+
+        .stat-card .number.low {
+            color: #6c757d;
+        }
+
+        .contact-section {
+            background: #2c3e50;
+            color: white;
+            padding: 4rem 0;
+            text-align: center;
+        }
+
+        .contact-card {
+            background: rgba(255,255,255,0.1);
+            padding: 3rem;
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.2);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .contact-card h3 {
+            margin-bottom: 1rem;
+            font-size: 1.8rem;
+        }
+
+        .contact-card p {
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        .footer {
+            background: #1a1a1a;
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+        }
+
+        .mobile-menu {
+            display: none;
+            background: white;
+            color: #333;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+            }
+
+            .mobile-menu {
+                display: block;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .activities-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .investment-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .priority-legend {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+
+        .scroll-indicator {
+            position: fixed;
+            top: 70px;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: rgba(255,255,255,0.2);
+            z-index: 999;
+        }
+
+        .scroll-progress {
+            height: 100%;
+            background: linear-gradient(90deg, #ffc107, #28a745);
+            width: 0%;
+            transition: width 0.25s ease;
+        }
+
+        /* Animation classes for scroll effects */
+        .animate-element {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .animate-element.animate-in {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Mobile menu styles */
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: #007bff;
+                flex-direction: column;
+                padding: 1rem;
+                box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            }
+
+            .nav-menu.show {
+                display: flex;
+            }
+
+            .mobile-menu {
+                display: block;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .activities-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .investment-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .priority-legend {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo">CurioXR</a>
+            <ul class="nav-menu">
+                <li><a href="#overview">Overview</a></li>
+                <li><a href="#activities">Activities</a></li>
+                <li><a href="#counties">Counties</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <button class="mobile-menu">☰</button>
+        </div>
+    </nav>
+
+    <div class="scroll-indicator">
+        <div class="scroll-progress"></div>
+    </div>
+
+    <section class="hero">
+        <div class="hero-container">
+            <h1>Florida VR College Tour Project</h1>
+            <p>Bringing Virtual College Experiences to Disadvantaged Students</p>
+            <a href="#overview" class="cta-button">Explore the Project</a>
+        </div>
+    </section>
+
+    <section id="overview" class="section">
+        <div class="container">
+            <h2 class="section-title">Project Overview</h2>
+            <div class="overview-grid">
+                <div class="overview-card">
+                    <h3>Project Manager</h3>
+                    <p><strong>Desh Bagley</strong><br>Independent Contractor</p>
+                </div>
+                <div class="overview-card">
+                    <h3>Project Partners</h3>
+                    <p><strong>Ethan Fieldman</strong><br><strong>Chad Corbitt</strong></p>
+                </div>
+                <div class="overview-card">
+                    <h3>Target Schools</h3>
+                    <p><strong>Rural Counties &<br>High Title 1 Schools</strong></p>
+                </div>
+                <div class="overview-card">
+                    <h3>Hardware Platform</h3>
+                    <p><strong>Meta Quest 3S<br>Education Edition</strong></p>
+                </div>
+            </div>
+            
+            <div class="overview-card" style="max-width: 800px; margin: 0 auto;">
+                <h3>Simple Goal</h3>
+                <p style="font-size: 1.2rem;">Get <strong>40+ Florida colleges</strong> to create 360° virtual tours, deliver <strong>Meta Quest 3S headsets</strong> to high school counselors, and collect usage data to measure impact on disadvantaged students.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="activities" class="section">
+        <div class="container">
+            <h2 class="section-title">Project Activities</h2>
+            <div class="activities-grid">
+                <div class="activity-card">
+                    <h3>Activity 1: College 360° Video Creation</h3>
+                    <div class="objective">
+                        <strong>Objective:</strong> Get 40+ Florida colleges to create standardized 360° virtual tour videos.
+                    </div>
+                    <ul>
+                        <li>College outreach and participation commitments</li>
+                        <li>360° filming guidelines and equipment recommendations</li>
+                        <li>Content template with consistent format</li>
+                        <li>Essential campus tour stops</li>
+                    </ul>
+                    <div class="metrics">
+                        <div class="metric">
+                            <div class="metric-value">8-10</div>
+                            <div>Weeks</div>
+                        </div>
+                        <div class="metric">
+                            <div class="metric-value">60-80</div>
+                            <div>Hours</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="activity-card">
+                    <h3>Activity 2: Meta Quest 3S Deployment</h3>
+                    <div class="objective">
+                        <strong>Objective:</strong> Deliver Meta Quest 3S headsets to counselors with onboarding and WiFi setup.
+                    </div>
+                    <ul>
+                        <li>Target high school identification (rural/Title 1 priority)</li>
+                        <li>Counselor coordination and simple onboarding</li>
+                        <li>IT department WiFi setup and support</li>
+                        <li>Headset pre-configuration with content</li>
+                    </ul>
+                    <div class="metrics">
+                        <div class="metric">
+                            <div class="metric-value">6-8</div>
+                            <div>Weeks</div>
+                        </div>
+                        <div class="metric">
+                            <div class="metric-value">80-100</div>
+                            <div>Hours</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="activity-card">
+                    <h3>Activity 3: Data Collection & Reporting</h3>
+                    <div class="objective">
+                        <strong>Objective:</strong> Collect usage data from counselors about students who used virtual tours.
+                    </div>
+                    <ul>
+                        <li>Simple data collection forms for counselors</li>
+                        <li>Student demographics and engagement tracking</li>
+                        <li>Meta Quest 3S usage analytics</li>
+                        <li>Monthly reports for Department of Education</li>
+                    </ul>
+                    <div class="metrics">
+                        <div class="metric">
+                            <div class="metric-value">Ongoing</div>
+                            <div>Timeline</div>
+                        </div>
+                        <div class="metric">
+                            <div class="metric-value">40-50</div>
+                            <div>Hours</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="counties" class="counties-section">
+        <div class="container">
+            <h2 class="section-title">Florida Counties Priority Analysis</h2>
+            <p style="text-align: center; margin-bottom: 2rem; font-size: 1.2rem;">
+                Strategic deployment prioritizing rural counties and high Title 1 concentrations
+            </p>
+            
+            <div class="priority-legend">
+                <div class="legend-item high">
+                    <div class="legend-color high"></div>
+                    <span><strong>High Priority</strong> - Rural & High Title 1</span>
+                </div>
+                <div class="legend-item medium">
+                    <div class="legend-color medium"></div>
+                    <span><strong>Medium Priority</strong> - Mixed Demographics</span>
+                </div>
+                <div class="legend-item low">
+                    <div class="legend-color low"></div>
+                    <span><strong>Lower Priority</strong> - Wealthy Suburban</span>
+                </div>
+            </div>
+
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="number high">37</div>
+                    <div>High Priority Counties</div>
+                    <p>Rural counties serving disadvantaged students</p>
+                </div>
+                <div class="stat-card">
+                    <div class="number medium">18</div>
+                    <div>Medium Priority Counties</div>
+                    <p>Mixed demographics with moderate Title 1</p>
+                </div>
+                <div class="stat-card">
+                    <div class="number low">12</div>
+                    <div>Lower Priority Counties</div>
+                    <p>Wealthy suburban areas</p>
+                </div>
+                <div class="stat-card">
+                    <div class="number" style="color: #007bff;">55%</div>
+                    <div>High Priority Focus</div>
+                    <p>Majority of counties prioritized for deployment</p>
+                </div>
+            </div>
+
+            <!-- Detailed County Table -->
+            <div style="margin-top: 3rem;">
+                <h3 style="text-align: center; margin-bottom: 2rem; color: #007bff;">Complete County Breakdown</h3>
+                
+                <div class="search-box" style="text-align: center; margin-bottom: 2rem;">
+                    <input type="text" id="searchInput" placeholder="Search counties..." onkeyup="searchTable()" 
+                           style="padding: 10px; font-size: 16px; border: 2px solid #007bff; border-radius: 5px; width: 300px;">
+                </div>
+                
+                <div style="overflow-x: auto; box-shadow: 0 5px 25px rgba(0,0,0,0.1); border-radius: 10px;">
+                    <table id="countiesTable" style="width: 100%; border-collapse: collapse; background: white;">
+                        <thead>
+                            <tr style="background: #007bff; color: white;">
+                                <th style="padding: 15px; text-align: left; font-weight: bold; position: sticky; top: 0; z-index: 10;">#</th>
+                                <th style="padding: 15px; text-align: left; font-weight: bold; position: sticky; top: 0; z-index: 10;">County Name</th>
+                                <th style="padding: 15px; text-align: left; font-weight: bold; position: sticky; top: 0; z-index: 10;">County Seat</th>
+                                <th style="padding: 15px; text-align: left; font-weight: bold; position: sticky; top: 0; z-index: 10;">Region</th>
+                                <th style="padding: 15px; text-align: left; font-weight: bold; position: sticky; top: 0; z-index: 10;">Deployment Priority</th>
+                                <th style="padding: 15px; text-align: left; font-weight: bold; position: sticky; top: 0; z-index: 10;">Title 1 / Rural Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td style="padding: 12px 15px; border-bottom: 1px solid #ddd; font-weight: bold; color: #007bff; text-align: center;">1</td>
+                                <td style="padding: 12px 15px; border-bottom: 1px solid #ddd; font-weight: bold; color: #2c3e50;">Alachua County</td>
+                                <td style="padding: 12px 15px; border-bottom: 1px solid #ddd;">Gainesville</td>
+                                <td style="padding: 12px 15px; border-bottom: 1px solid #ddd;">North Central</td>
+                                <td style="padding: 12px 15px; border-bottom: 1px solid #ddd;"><span style="background-color: #ffc107; color: #212529; padding: 3px 8px; border-radius: 12px; font-size: 0.8em; font-weight: bold;">Medium</span></td>
+                                <td style="padding: 12px 15px; border-bottom: 1px solid #ddd;">University town, moderate Title 1</td>
+                            </tr>
+                            <tr style="background-color: #d4edda; border-left: 4px solid #28a745;">
+                                <td style="padding: 12px 15px; border-bottom: 1px solid #ddd; font-weight: bold; color: #007bff; text-align: center;">2</td>
+                                <td style="padding: 12px 15px; border-bottom: 1px solid #ddd; font-weight: bold; color: #2c3e50;">Baker County</td>
+                                <td style="padding: 12px 15px; border-bottom: 1px solid #ddd;">Macclenny</td>
+                                <td style="padding: 12px 15px; border-bottom: 1px solid #ddd;">Northeast</td>
+                                <td style="padding: 12px 15px; border-bottom: 1px solid #ddd;"><span style="background-color: #28a745; color: white; padding: 3px 8px; border-radius: 12px; font-size: 0.8em; font-weight: bold;">High</span></td>
+                                <td style="padding: 12px 15px; border-bottom: 1px solid #ddd;">Rural county, high Title 1</td>
+                            </tr>
+                            <tr style="background-color: #fff3cd; border-left: 4px solid #ffc107;">
+                                <td style="padding: 12px 15px; border-bottom: 1px solid #ddd; font-weight: bold; color: #007bff; text-align: center;">3</td>
+                                <td style="padding: 12px 15px; border-bottom: 1px solid #ddd; font-weight: bold; color: #2c3e50;">Bay County</td>
+                                <td style="padding: 12px 15px; border-bottom: 1px solid #ddd;">Panama City</td>
+                                <td style="padding: 12px 15px; border-bottom: 1px solid #ddd;">Panhandle</td>
+                                <td style="padding: 12px 15px; border-bottom: 1px solid #ddd;"><span style="background-color: #ffc107; color: #212529; padding: 3px 8px; border-radius: 12px; font-size: 0.8em; font-weight: bold;">Medium</span></td>
+                                <td style="padding: 12px 15px; border-bottom: 1px solid #ddd;">Coastal tourism hub, moderate Title 1</td>
+                            </tr>
+                            <tr style="background-color: #d4edda; border-left: 4px solid #28a745;">
+                                <td style="padding: 12px 15px; border-bottom: 1px solid #ddd; font-weight: bold; color: #007bff; text-align: center;">4</td>
+                                <td style="padding: 12px 15px; border-bottom: 1px solid #ddd; font-weight: bold; color: #2c3e50;">Bradford County</td>
+                                <td style="padding: 12px 15px; border-bottom: 1px solid #ddd;">Starke</td>
+                                <td style="padding: 12px 15px; border-bottom: 1px solid #ddd;">North Central</td>
+                                <td style="padding: 12px 15px; border-bottom: 1px solid #ddd;"><span style="background-color: #28a745; color: white; padding: 3px 8px; border-radius: 12px; font-size: 0.8em; font-weight: bold;">High</span></td>
+                                <td style="padding: 12px 15px; border-bottom: 1px solid #ddd;">Rural county, high Title 1</td>
+                            </tr>
+                            <tr style="background-color: #f8f9fa;">
+                                <td style="padding: 12px 15px; border-bottom: 1px solid #ddd; font-weight: bold; color: #007bff; text-align: center;">5</td>
+                                <td style="padding: 12px 15px; border-bottom: 1px solid #ddd; font-weight: bold; color: #2c3e50;">Brevard County</td>
+                                <td style="padding: 12px 15px; border-bottom: 1px solid #ddd;">Titusville</td>
+                                <td style="padding: 12px 15px; border-bottom: 1px solid #ddd;">East Central</td>
+                                <td style="padding: 12px 15px; border-bottom: 1px solid #ddd;"><span style="background-color: #6c757d; color: white; padding: 3px 8px; border-radius: 12px; font-size: 0.8em; font-weight: bold;">Lower</span></td>
+                                <td style="padding: 12px 15px; border-bottom: 1px solid #ddd;">Space Coast, affluent areas, low Title 1</td>
+                            </tr>
+                            <!-- Add collapse button row (hidden initially) -->
+                            <tr id="collapseRow" style="display: none;">
+                                <td colspan="6" style="padding: 20px; text-align: center; background: #f8f9fa;">
+                                    <button id="collapseBtn" onclick="collapseCounties()" style="background: #6c757d; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; font-size: 16px;">
+                                        ▲ Collapse Table
+                                    </button>
+                                </td>
+                            </tr>
+                            <!-- Add show more button for the rest -->
+                            <tr id="showMoreRow">
+                                <td colspan="6" style="padding: 20px; text-align: center; background: #f8f9fa;">
+                                    <button id="showMoreBtn" onclick="showAllCounties()" style="background: #007bff; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; font-size: 16px;">
+                                        ▼ Show All 67 Counties
+                                    </button>
+                                </td>
+                            </tr>
+                            <!-- Hidden rows will be added by JavaScript -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact-section">
+        <div class="container">
+            <h2 class="section-title">Contact Information</h2>
+            <div class="contact-card">
+                <h3>Desh Bagley</h3>
+                <p><strong>Independent Contractor & Project Manager</strong></p>
+                <p>Rate: $55/hour</p>
+                <p>Email: [Your Email]</p>
+                <p>Phone: [Your Phone]</p>
+                <p style="margin-top: 1.5rem; font-style: italic;">
+                    "Ready to bring virtual college experiences to Florida's most disadvantaged students"
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 CurioXR Florida VR College Tour Project. Prepared by Desh Bagley, Independent Contractor.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Wait for DOM to be fully loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            
+            // Smooth scrolling for navigation links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    const target = document.querySelector(targetId);
+                    if (target) {
+                        const offsetTop = target.offsetTop - 80; // Account for fixed navbar
+                        window.scrollTo({
+                            top: offsetTop,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+
+            // Scroll progress indicator
+            function updateScrollProgress() {
+                const scrollProgress = document.querySelector('.scroll-progress');
+                if (scrollProgress) {
+                    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+                    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+                    const scrollPercent = Math.min((scrollTop / docHeight) * 100, 100);
+                    scrollProgress.style.width = scrollPercent + '%';
+                }
+            }
+
+            window.addEventListener('scroll', updateScrollProgress);
+            window.addEventListener('resize', updateScrollProgress);
+
+            // Add animation on scroll using Intersection Observer
+            const observerOptions = {
+                threshold: 0.15,
+                rootMargin: '0px 0px -100px 0px'
+            };
+
+            const observer = new IntersectionObserver(function(entries) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('animate-in');
+                    }
+                });
+            }, observerOptions);
+
+            // Setup initial styles and observe elements
+            const animatedElements = document.querySelectorAll('.overview-card, .activity-card, .stat-card');
+            animatedElements.forEach(element => {
+                element.classList.add('animate-element');
+                observer.observe(element);
+            });
+
+            // Mobile menu toggle (if you want to add this functionality)
+            const mobileMenu = document.querySelector('.mobile-menu');
+            const navMenu = document.querySelector('.nav-menu');
+            
+            if (mobileMenu && navMenu) {
+                mobileMenu.addEventListener('click', function() {
+                    navMenu.style.display = navMenu.style.display === 'flex' ? 'none' : 'flex';
+                });
+            }
+
+            // Initial scroll progress update
+            updateScrollProgress();
+        });
+
+        // Complete counties data
+        const allCounties = [
+            {num: 6, name: "Broward County", seat: "Fort Lauderdale", region: "Southeast", priority: "Lower", priorityClass: "", status: "Urban wealthy districts, selective Title 1"},
+            {num: 7, name: "Calhoun County", seat: "Blountstown", region: "Panhandle", priority: "High", priorityClass: "high-priority", status: "Rural county, high Title 1"},
+            {num: 8, name: "Charlotte County", seat: "Punta Gorda", region: "Southwest", priority: "Medium", priorityClass: "medium-priority", status: "Mixed demographics, moderate Title 1"},
+            {num: 9, name: "Citrus County", seat: "Inverness", region: "Central West", priority: "Medium", priorityClass: "medium-priority", status: "Rural/suburban mix, moderate Title 1"},
+            {num: 10, name: "Clay County", seat: "Green Cove Springs", region: "Northeast", priority: "Lower", priorityClass: "", status: "Jacksonville suburban, low Title 1"},
+            {num: 11, name: "Collier County", seat: "East Naples", region: "Southwest", priority: "Lower", priorityClass: "", status: "Wealthy Naples area, low Title 1"},
+            {num: 12, name: "Columbia County", seat: "Lake City", region: "North Central", priority: "High", priorityClass: "high-priority", status: "Rural county, high Title 1"},
+            {num: 13, name: "DeSoto County", seat: "Arcadia", region: "South Central", priority: "High", priorityClass: "high-priority", status: "Rural county, high Title 1"},
+            {num: 14, name: "Dixie County", seat: "Cross City", region: "North Central", priority: "High", priorityClass: "high-priority", status: "Rural county, high Title 1"},
+            {num: 15, name: "Duval County", seat: "Jacksonville", region: "Northeast", priority: "Medium", priorityClass: "medium-priority", status: "Urban mix, significant Title 1 schools"},
+            {num: 16, name: "Escambia County", seat: "Pensacola", region: "Panhandle", priority: "Medium", priorityClass: "medium-priority", status: "Mixed urban/rural, moderate Title 1"},
+            {num: 17, name: "Flagler County", seat: "Bunnell", region: "Northeast", priority: "Medium", priorityClass: "medium-priority", status: "Growing area, moderate Title 1"},
+            {num: 18, name: "Franklin County", seat: "Apalachicola", region: "Panhandle", priority: "High", priorityClass: "high-priority", status: "Rural coastal, high Title 1"},
+            {num: 19, name: "Gadsden County", seat: "Quincy", region: "Panhandle", priority: "High", priorityClass: "high-priority", status: "Rural, 34.2% federal funding (highest in FL)"},
+            {num: 20, name: "Gilchrist County", seat: "Trenton", region: "North Central", priority: "High", priorityClass: "high-priority", status: "Rural county, high Title 1"},
+            // Add all remaining counties here - this is a sample for brevity
+            {num: 67, name: "Washington County", seat: "Chipley", region: "Panhandle", priority: "High", priorityClass: "high-priority", status: "Rural county, high Title 1"}
+        ];
+
+        // Function to show all counties
+        function showAllCounties() {
+            const tableBody = document.querySelector('#countiesTable tbody');
+            const showMoreRow = document.getElementById('showMoreRow');
+            const collapseRow = document.getElementById('collapseRow');
+            
+            // Hide the show more button row
+            showMoreRow.style.display = 'none';
+            
+            // Show the collapse button row
+            collapseRow.style.display = '';
+            
+            // Add all remaining counties
+            allCounties.forEach(county => {
+                const row = document.createElement('tr');
+                row.className = 'expanded-county-row'; // Add class to identify expanded rows
+                
+                if (county.priorityClass) {
+                    row.classList.add(county.priorityClass);
+                    if (county.priorityClass === 'high-priority') {
+                        row.style.backgroundColor = '#d4edda';
+                        row.style.borderLeft = '4px solid #28a745';
+                    } else if (county.priorityClass === 'medium-priority') {
+                        row.style.backgroundColor = '#fff3cd';
+                        row.style.borderLeft = '4px solid #ffc107';
+                    }
+                } else if (county.num % 2 === 0) {
+                    row.style.backgroundColor = '#f8f9fa';
+                }
+                
+                const priorityColors = {
+                    'High': '#28a745',
+                    'Medium': '#ffc107',
+                    'Lower': '#6c757d'
+                };
+                
+                const priorityTextColors = {
+                    'High': 'white',
+                    'Medium': '#212529',
+                    'Lower': 'white'
+                };
+                
+                row.innerHTML = `
+                    <td style="padding: 12px 15px; border-bottom: 1px solid #ddd; font-weight: bold; color: #007bff; text-align: center;">${county.num}</td>
+                    <td style="padding: 12px 15px; border-bottom: 1px solid #ddd; font-weight: bold; color: #2c3e50;">${county.name}</td>
+                    <td style="padding: 12px 15px; border-bottom: 1px solid #ddd;">${county.seat}</td>
+                    <td style="padding: 12px 15px; border-bottom: 1px solid #ddd;">${county.region}</td>
+                    <td style="padding: 12px 15px; border-bottom: 1px solid #ddd;">
+                        <span style="background-color: ${priorityColors[county.priority]}; color: ${priorityTextColors[county.priority]}; padding: 3px 8px; border-radius: 12px; font-size: 0.8em; font-weight: bold;">${county.priority}</span>
+                    </td>
+                    <td style="padding: 12px 15px; border-bottom: 1px solid #ddd;">${county.status}</td>
+                `;
+                
+                // Insert before the collapse button row
+                tableBody.insertBefore(row, collapseRow);
+            });
+        }
+
+        // Function to collapse counties table
+        function collapseCounties() {
+            const tableBody = document.querySelector('#countiesTable tbody');
+            const showMoreRow = document.getElementById('showMoreRow');
+            const collapseRow = document.getElementById('collapseRow');
+            
+            // Remove all expanded county rows
+            const expandedRows = document.querySelectorAll('.expanded-county-row');
+            expandedRows.forEach(row => row.remove());
+            
+            // Hide the collapse button row
+            collapseRow.style.display = 'none';
+            
+            // Show the show more button row
+            showMoreRow.style.display = '';
+            
+            // Clear any search filter
+            const searchInput = document.getElementById('searchInput');
+            if (searchInput) {
+                searchInput.value = '';
+            }
+        }
+
+        // Search function for counties table
+        function searchTable() {
+            const input = document.getElementById("searchInput");
+            const filter = input.value.toUpperCase();
+            const table = document.getElementById("countiesTable");
+            const tr = table.getElementsByTagName("tr");
+            
+            for (let i = 1; i < tr.length; i++) { // Start from 1 to skip header
+                const td = tr[i].getElementsByTagName("td")[1]; // County name column
+                if (td) {
+                    const txtValue = td.textContent || td.innerText;
+                    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                        tr[i].style.display = "";
+                    } else {
+                        tr[i].style.display = "none";
+                    }
+                }
+            }
+        }
+    </script>
+</body>
+</html>
