@@ -309,6 +309,138 @@
             color: #6c757d;
         }
 
+        /* High Schools Table Styles */
+        .schools-section {
+            background: #f8f9fa;
+            padding: 4rem 0;
+        }
+
+        .schools-table-container {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.1);
+            margin-top: 2rem;
+        }
+
+        .schools-summary {
+            background-color: #ecf0f1;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+            border-left: 4px solid #3498db;
+        }
+
+        .schools-summary h3 {
+            color: #2c3e50;
+            margin-top: 0;
+            font-size: 1.3em;
+        }
+
+        .schools-priority-info {
+            background-color: #fff3cd;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            border-left: 4px solid #ffc107;
+        }
+
+        .schools-priority-info h4 {
+            color: #856404;
+            margin-top: 0;
+            font-size: 1.1em;
+        }
+
+        .search-box {
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .search-box input {
+            padding: 10px;
+            font-size: 16px;
+            border: 2px solid #007bff;
+            border-radius: 5px;
+            width: 300px;
+        }
+
+        .schools-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        .schools-table th {
+            background-color: #007bff;
+            color: white;
+            padding: 15px;
+            text-align: left;
+            font-weight: bold;
+            font-size: 1.1em;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+
+        .schools-table td {
+            padding: 12px 15px;
+            border-bottom: 1px solid #ddd;
+            vertical-align: top;
+        }
+
+        .schools-table tr:nth-child(even) {
+            background-color: #f8f9fa;
+        }
+
+        .schools-table tr:hover {
+            background-color: #e8f4f8;
+        }
+
+        .county-number {
+            font-weight: bold;
+            color: #007bff;
+            text-align: center;
+        }
+
+        .county-name {
+            font-weight: bold;
+            color: #2c3e50;
+        }
+
+        .high-priority {
+            background-color: #d4edda !important;
+            border-left: 4px solid #28a745;
+        }
+
+        .medium-priority {
+            background-color: #fff3cd !important;
+            border-left: 4px solid #ffc107;
+        }
+
+        .priority-tag {
+            display: inline-block;
+            padding: 3px 8px;
+            border-radius: 12px;
+            font-size: 0.8em;
+            font-weight: bold;
+            margin-left: 8px;
+        }
+
+        .priority-high {
+            background-color: #28a745;
+            color: white;
+        }
+
+        .priority-medium {
+            background-color: #ffc107;
+            color: #212529;
+        }
+
+        .priority-low {
+            background-color: #6c757d;
+            color: white;
+        }
+
         .contact-section {
             background: #2c3e50;
             color: white;
@@ -369,13 +501,14 @@
                 grid-template-columns: 1fr;
             }
 
-            .investment-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
             .priority-legend {
                 flex-direction: column;
                 align-items: center;
+            }
+
+            .search-box input {
+                width: 100%;
+                max-width: 300px;
             }
         }
 
@@ -396,7 +529,6 @@
             transition: width 0.25s ease;
         }
 
-        /* Animation classes for scroll effects */
         .animate-element {
             opacity: 0;
             transform: translateY(30px);
@@ -406,46 +538,6 @@
         .animate-element.animate-in {
             opacity: 1;
             transform: translateY(0);
-        }
-
-        /* Mobile menu styles */
-        @media (max-width: 768px) {
-            .nav-menu {
-                display: none;
-                position: absolute;
-                top: 100%;
-                left: 0;
-                width: 100%;
-                background: #007bff;
-                flex-direction: column;
-                padding: 1rem;
-                box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            }
-
-            .nav-menu.show {
-                display: flex;
-            }
-
-            .mobile-menu {
-                display: block;
-            }
-
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-
-            .activities-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .investment-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .priority-legend {
-                flex-direction: column;
-                align-items: center;
-            }
         }
     </style>
 </head>
@@ -457,6 +549,7 @@
                 <li><a href="#overview">Overview</a></li>
                 <li><a href="#activities">Activities</a></li>
                 <li><a href="#counties">Counties</a></li>
+                <li><a href="#schools">High Schools</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
             <button class="mobile-menu">☰</button>
@@ -470,7 +563,7 @@
     <section class="hero">
         <div class="hero-container">
             <h1>Florida VR College Tour Project</h1>
-            <p>Bringing Virtual College Experiences to Florida's High School Students</p>
+            <p>Bringing Virtual College Experiences to Disadvantaged Students</p>
             <a href="#overview" class="cta-button">Explore the Project</a>
         </div>
     </section>
@@ -499,7 +592,7 @@
             
             <div class="overview-card" style="max-width: 800px; margin: 0 auto;">
                 <h3>Simple Goal</h3>
-                <p style="font-size: 1.2rem;">Get <strong>40+ Florida colleges</strong> to create 360° virtual tours, deliver <strong>Meta Quest 3S headsets</strong> to high school counselors, allowing Florida high school students to explore college campuses virtually. Collect usage data to measure impact among students in rural communities and at Title 1 schools.</p>
+                <p style="font-size: 1.2rem;">Get <strong>40+ Florida colleges</strong> to create 360° virtual tours, deliver <strong>Meta Quest 3S headsets</strong> to high school counselors, and collect usage data to measure impact on disadvantaged students.</p>
             </div>
         </div>
     </section>
@@ -515,17 +608,17 @@
                     </div>
                     <ul>
                         <li>College outreach and participation commitments</li>
-                        <li>360° filming guidelines and equipment loan or purchase recommendations</li>
+                        <li>360° filming guidelines and equipment recommendations</li>
                         <li>Content template with consistent format</li>
-                        <li>Recommend essential campus tour locations </li>
+                        <li>Essential campus tour stops</li>
                     </ul>
                     <div class="metrics">
                         <div class="metric">
-                            <div class="metric-value">12-24</div>
+                            <div class="metric-value">8-10</div>
                             <div>Weeks</div>
                         </div>
                         <div class="metric">
-                            <div class="metric-value">80-180</div>
+                            <div class="metric-value">60-80</div>
                             <div>Hours</div>
                         </div>
                     </div>
@@ -537,7 +630,7 @@
                         <strong>Objective:</strong> Deliver Meta Quest 3S headsets to counselors with onboarding and WiFi setup.
                     </div>
                     <ul>
-                        <li>Target high schools for headsets (rural/Title 1 priority)</li>
+                        <li>Target high school identification (rural/Title 1 priority)</li>
                         <li>Counselor coordination and simple onboarding</li>
                         <li>IT department WiFi setup and support</li>
                         <li>Headset pre-configuration with content</li>
@@ -548,7 +641,7 @@
                             <div>Weeks</div>
                         </div>
                         <div class="metric">
-                            <div class="metric-value">120-200</div>
+                            <div class="metric-value">80-100</div>
                             <div>Hours</div>
                         </div>
                     </div>
@@ -571,7 +664,7 @@
                             <div>Timeline</div>
                         </div>
                         <div class="metric">
-                            <div class="metric-value">80-150</div>
+                            <div class="metric-value">40-50</div>
                             <div>Hours</div>
                         </div>
                     </div>
@@ -606,17 +699,17 @@
                 <div class="stat-card">
                     <div class="number high">37</div>
                     <div>High Priority Counties</div>
-                    <p>Rural counties serving Title 1 students</p>
+                    <p>Rural counties serving disadvantaged students</p>
                 </div>
                 <div class="stat-card">
                     <div class="number medium">18</div>
                     <div>Medium Priority Counties</div>
-                    <p>Mixed demographics with moderate Title 1 enrollment</p>
+                    <p>Mixed demographics with moderate Title 1</p>
                 </div>
                 <div class="stat-card">
                     <div class="number low">12</div>
                     <div>Lower Priority Counties</div>
-                    <p> Fewer Title 1 in suburban areas</p>
+                    <p>Wealthy suburban areas</p>
                 </div>
                 <div class="stat-card">
                     <div class="number" style="color: #007bff;">55%</div>
@@ -624,305 +717,612 @@
                     <p>Majority of counties prioritized for deployment</p>
                 </div>
             </div>
-
-            <!-- Detailed County Table -->
-            <div style="margin-top: 3rem;">
-                <h3 style="text-align: center; margin-bottom: 2rem; color: #007bff;">Complete County Breakdown</h3>
-                
-                <div class="search-box" style="text-align: center; margin-bottom: 2rem;">
-                    <input type="text" id="searchInput" placeholder="Search counties..." onkeyup="searchTable()" 
-                           style="padding: 10px; font-size: 16px; border: 2px solid #007bff; border-radius: 5px; width: 300px;">
-                </div>
-                
-                <div style="overflow-x: auto; box-shadow: 0 5px 25px rgba(0,0,0,0.1); border-radius: 10px;">
-                    <table id="countiesTable" style="width: 100%; border-collapse: collapse; background: white;">
-                        <thead>
-                            <tr style="background: #007bff; color: white;">
-                                <th style="padding: 15px; text-align: left; font-weight: bold; position: sticky; top: 0; z-index: 10;">#</th>
-                                <th style="padding: 15px; text-align: left; font-weight: bold; position: sticky; top: 0; z-index: 10;">County Name</th>
-                                <th style="padding: 15px; text-align: left; font-weight: bold; position: sticky; top: 0; z-index: 10;">County Seat</th>
-                                <th style="padding: 15px; text-align: left; font-weight: bold; position: sticky; top: 0; z-index: 10;">Region</th>
-                                <th style="padding: 15px; text-align: left; font-weight: bold; position: sticky; top: 0; z-index: 10;">Deployment Priority</th>
-                                <th style="padding: 15px; text-align: left; font-weight: bold; position: sticky; top: 0; z-index: 10;">Title 1 / Rural Status</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td style="padding: 12px 15px; border-bottom: 1px solid #ddd; font-weight: bold; color: #007bff; text-align: center;">1</td>
-                                <td style="padding: 12px 15px; border-bottom: 1px solid #ddd; font-weight: bold; color: #2c3e50;">Alachua County</td>
-                                <td style="padding: 12px 15px; border-bottom: 1px solid #ddd;">Gainesville</td>
-                                <td style="padding: 12px 15px; border-bottom: 1px solid #ddd;">North Central</td>
-                                <td style="padding: 12px 15px; border-bottom: 1px solid #ddd;"><span style="background-color: #ffc107; color: #212529; padding: 3px 8px; border-radius: 12px; font-size: 0.8em; font-weight: bold;">Medium</span></td>
-                                <td style="padding: 12px 15px; border-bottom: 1px solid #ddd;">University town, moderate Title 1</td>
-                            </tr>
-                            <tr style="background-color: #d4edda; border-left: 4px solid #28a745;">
-                                <td style="padding: 12px 15px; border-bottom: 1px solid #ddd; font-weight: bold; color: #007bff; text-align: center;">2</td>
-                                <td style="padding: 12px 15px; border-bottom: 1px solid #ddd; font-weight: bold; color: #2c3e50;">Baker County</td>
-                                <td style="padding: 12px 15px; border-bottom: 1px solid #ddd;">Macclenny</td>
-                                <td style="padding: 12px 15px; border-bottom: 1px solid #ddd;">Northeast</td>
-                                <td style="padding: 12px 15px; border-bottom: 1px solid #ddd;"><span style="background-color: #28a745; color: white; padding: 3px 8px; border-radius: 12px; font-size: 0.8em; font-weight: bold;">High</span></td>
-                                <td style="padding: 12px 15px; border-bottom: 1px solid #ddd;">Rural county, high Title 1</td>
-                            </tr>
-                            <tr style="background-color: #fff3cd; border-left: 4px solid #ffc107;">
-                                <td style="padding: 12px 15px; border-bottom: 1px solid #ddd; font-weight: bold; color: #007bff; text-align: center;">3</td>
-                                <td style="padding: 12px 15px; border-bottom: 1px solid #ddd; font-weight: bold; color: #2c3e50;">Bay County</td>
-                                <td style="padding: 12px 15px; border-bottom: 1px solid #ddd;">Panama City</td>
-                                <td style="padding: 12px 15px; border-bottom: 1px solid #ddd;">Panhandle</td>
-                                <td style="padding: 12px 15px; border-bottom: 1px solid #ddd;"><span style="background-color: #ffc107; color: #212529; padding: 3px 8px; border-radius: 12px; font-size: 0.8em; font-weight: bold;">Medium</span></td>
-                                <td style="padding: 12px 15px; border-bottom: 1px solid #ddd;">Coastal tourism hub, moderate Title 1</td>
-                            </tr>
-                            <tr style="background-color: #d4edda; border-left: 4px solid #28a745;">
-                                <td style="padding: 12px 15px; border-bottom: 1px solid #ddd; font-weight: bold; color: #007bff; text-align: center;">4</td>
-                                <td style="padding: 12px 15px; border-bottom: 1px solid #ddd; font-weight: bold; color: #2c3e50;">Bradford County</td>
-                                <td style="padding: 12px 15px; border-bottom: 1px solid #ddd;">Starke</td>
-                                <td style="padding: 12px 15px; border-bottom: 1px solid #ddd;">North Central</td>
-                                <td style="padding: 12px 15px; border-bottom: 1px solid #ddd;"><span style="background-color: #28a745; color: white; padding: 3px 8px; border-radius: 12px; font-size: 0.8em; font-weight: bold;">High</span></td>
-                                <td style="padding: 12px 15px; border-bottom: 1px solid #ddd;">Rural county, high Title 1</td>
-                            </tr>
-                            <tr style="background-color: #f8f9fa;">
-                                <td style="padding: 12px 15px; border-bottom: 1px solid #ddd; font-weight: bold; color: #007bff; text-align: center;">5</td>
-                                <td style="padding: 12px 15px; border-bottom: 1px solid #ddd; font-weight: bold; color: #2c3e50;">Brevard County</td>
-                                <td style="padding: 12px 15px; border-bottom: 1px solid #ddd;">Titusville</td>
-                                <td style="padding: 12px 15px; border-bottom: 1px solid #ddd;">East Central</td>
-                                <td style="padding: 12px 15px; border-bottom: 1px solid #ddd;"><span style="background-color: #6c757d; color: white; padding: 3px 8px; border-radius: 12px; font-size: 0.8em; font-weight: bold;">Lower</span></td>
-                                <td style="padding: 12px 15px; border-bottom: 1px solid #ddd;">Space Coast, affluent areas, low Title 1</td>
-                            </tr>
-                            <!-- Add collapse button row (hidden initially) -->
-                            <tr id="collapseRow" style="display: none;">
-                                <td colspan="6" style="padding: 20px; text-align: center; background: #f8f9fa;">
-                                    <button id="collapseBtn" onclick="collapseCounties()" style="background: #6c757d; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; font-size: 16px;">
-                                        ▲ Collapse Table
-                                    </button>
-                                </td>
-                            </tr>
-                            <!-- Add show more button for the rest -->
-                            <tr id="showMoreRow">
-                                <td colspan="6" style="padding: 20px; text-align: center; background: #f8f9fa;">
-                                    <button id="showMoreBtn" onclick="showAllCounties()" style="background: #007bff; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; font-size: 16px;">
-                                        ▼ Show All 67 Counties
-                                    </button>
-                                </td>
-                            </tr>
-                            <!-- Hidden rows will be added by JavaScript -->
-                        </tbody>
-                    </table>
-                </div>
-            </div>
         </div>
     </section>
 
-    <section id="contact" class="contact-section">
+    <section id="schools" class="schools-section">
         <div class="container">
-            <h2 class="section-title">Contact Information</h2>
-            <div class="contact-card">
-                <h3>Desh Bagley</h3>
-                <p><strong>Independent Contractor & Project Manager</strong></p>
-                <p>Rate: $55 - $75/hour</p>
-                <p>Email: deshbagley@gmail.com </p>
-                <p>Phone: 813-453-8612 </p>
-                <p style="margin-top: 1.5rem; font-style: italic;">
-                    "Ready to bring virtual college experiences to Florida's high school students"
-                </p>
-            </div>
-        </div>
-    </section>
+            <h2 class="section-title">Florida High Schools - VR Deployment Strategy</h2>
+            <p style="text-align: center; margin-bottom: 2rem; font-size: 1.2rem;">
+                Complete list of all 67 Florida counties with strategic deployment planning for VR headsets
+            </p>
 
-    <footer class="footer">
-        <div class="container">
-            <p>&copy; 2025 CurioXR Florida VR College Tour Project. Prepared by Desh Bagley, Independent Contractor.</p>
-        </div>
-    </footer>
+            <div class="schools-table-container">
+                <div class="schools-summary">
+                    <h3>VR Headset Deployment Overview</h3>
+                    <p>This comprehensive county list provides the foundation for strategic planning of VR headset deployment across Florida's high schools. The deployment strategy prioritizes rural counties and counties with high concentrations of Title 1 schools to serve disadvantaged students who need the most support.</p>
+                    
+                    <div class="overview-grid" style="margin-top: 20px;">
+                        <div class="stat-card">
+                            <div class="number" style="color: #007bff;">67</div>
+                            <div class="stat-label">Total Counties</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="number" style="color: #007bff;">40+</div>
+                            <div class="stat-label">Participating Colleges</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="number" style="color: #007bff;">3M+</div>
+                            <div class="stat-label">K-12 Students</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="number" style="color: #007bff;">63%</div>
+                            <div class="stat-label">Schools are Title 1</div>
+                        </div>
+                    </div>
+                </div>
 
-    <script>
-        // Wait for DOM to be fully loaded
-        document.addEventListener('DOMContentLoaded', function() {
-            
-            // Smooth scrolling for navigation links
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function (e) {
-                    e.preventDefault();
-                    const targetId = this.getAttribute('href');
-                    const target = document.querySelector(targetId);
-                    if (target) {
-                        const offsetTop = target.offsetTop - 80; // Account for fixed navbar
-                        window.scrollTo({
-                            top: offsetTop,
-                            behavior: 'smooth'
-                        });
-                    }
-                });
-            });
+                <div class="schools-priority-info">
+                    <h4>VR Headset Deployment Priority System</h4>
+                    <p><strong>High Priority:</strong> Rural counties and counties with high concentrations of Title 1 schools (serving disadvantaged students)</p>
+                    <p><strong>Medium Priority:</strong> Counties with moderate Title 1 concentrations or mixed rural/suburban areas</p>
+                    <p><strong>Lower Priority:</strong> Wealthy suburban counties with fewer Title 1 schools</p>
+                </div>
 
-            // Scroll progress indicator
-            function updateScrollProgress() {
-                const scrollProgress = document.querySelector('.scroll-progress');
-                if (scrollProgress) {
-                    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-                    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-                    const scrollPercent = Math.min((scrollTop / docHeight) * 100, 100);
-                    scrollProgress.style.width = scrollPercent + '%';
-                }
-            }
+                <div class="priority-legend">
+                    <div class="legend-item high">
+                        <div class="legend-color high"></div>
+                        <span>High Priority - Rural Counties & High Title 1 Concentration</span>
+                    </div>
+                    <div class="legend-item medium">
+                        <div class="legend-color medium"></div>
+                        <span>Medium Priority - Mixed Demographics</span>
+                    </div>
+                    <div class="legend-item low">
+                        <div class="legend-color low"></div>
+                        <span>Lower Priority - Wealthy Suburban Counties</span>
+                    </div>
+                </div>
 
-            window.addEventListener('scroll', updateScrollProgress);
-            window.addEventListener('resize', updateScrollProgress);
-
-            // Add animation on scroll using Intersection Observer
-            const observerOptions = {
-                threshold: 0.15,
-                rootMargin: '0px 0px -100px 0px'
-            };
-
-            const observer = new IntersectionObserver(function(entries) {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('animate-in');
-                    }
-                });
-            }, observerOptions);
-
-            // Setup initial styles and observe elements
-            const animatedElements = document.querySelectorAll('.overview-card, .activity-card, .stat-card');
-            animatedElements.forEach(element => {
-                element.classList.add('animate-element');
-                observer.observe(element);
-            });
-
-            // Mobile menu toggle (if you want to add this functionality)
-            const mobileMenu = document.querySelector('.mobile-menu');
-            const navMenu = document.querySelector('.nav-menu');
-            
-            if (mobileMenu && navMenu) {
-                mobileMenu.addEventListener('click', function() {
-                    navMenu.style.display = navMenu.style.display === 'flex' ? 'none' : 'flex';
-                });
-            }
-
-            // Initial scroll progress update
-            updateScrollProgress();
-        });
-
-        // Complete counties data
-        const allCounties = [
-            {num: 6, name: "Broward County", seat: "Fort Lauderdale", region: "Southeast", priority: "Lower", priorityClass: "", status: "Urban wealthy districts, selective Title 1"},
-            {num: 7, name: "Calhoun County", seat: "Blountstown", region: "Panhandle", priority: "High", priorityClass: "high-priority", status: "Rural county, high Title 1"},
-            {num: 8, name: "Charlotte County", seat: "Punta Gorda", region: "Southwest", priority: "Medium", priorityClass: "medium-priority", status: "Mixed demographics, moderate Title 1"},
-            {num: 9, name: "Citrus County", seat: "Inverness", region: "Central West", priority: "Medium", priorityClass: "medium-priority", status: "Rural/suburban mix, moderate Title 1"},
-            {num: 10, name: "Clay County", seat: "Green Cove Springs", region: "Northeast", priority: "Lower", priorityClass: "", status: "Jacksonville suburban, low Title 1"},
-            {num: 11, name: "Collier County", seat: "East Naples", region: "Southwest", priority: "Lower", priorityClass: "", status: "Wealthy Naples area, low Title 1"},
-            {num: 12, name: "Columbia County", seat: "Lake City", region: "North Central", priority: "High", priorityClass: "high-priority", status: "Rural county, high Title 1"},
-            {num: 13, name: "DeSoto County", seat: "Arcadia", region: "South Central", priority: "High", priorityClass: "high-priority", status: "Rural county, high Title 1"},
-            {num: 14, name: "Dixie County", seat: "Cross City", region: "North Central", priority: "High", priorityClass: "high-priority", status: "Rural county, high Title 1"},
-            {num: 15, name: "Duval County", seat: "Jacksonville", region: "Northeast", priority: "Medium", priorityClass: "medium-priority", status: "Urban mix, significant Title 1 schools"},
-            {num: 16, name: "Escambia County", seat: "Pensacola", region: "Panhandle", priority: "Medium", priorityClass: "medium-priority", status: "Mixed urban/rural, moderate Title 1"},
-            {num: 17, name: "Flagler County", seat: "Bunnell", region: "Northeast", priority: "Medium", priorityClass: "medium-priority", status: "Growing area, moderate Title 1"},
-            {num: 18, name: "Franklin County", seat: "Apalachicola", region: "Panhandle", priority: "High", priorityClass: "high-priority", status: "Rural coastal, high Title 1"},
-            {num: 19, name: "Gadsden County", seat: "Quincy", region: "Panhandle", priority: "High", priorityClass: "high-priority", status: "Rural, 34.2% federal funding (highest in FL)"},
-            {num: 20, name: "Gilchrist County", seat: "Trenton", region: "North Central", priority: "High", priorityClass: "high-priority", status: "Rural county, high Title 1"},
-            // Add all remaining counties here - this is a sample for brevity
-            {num: 67, name: "Washington County", seat: "Chipley", region: "Panhandle", priority: "High", priorityClass: "high-priority", status: "Rural county, high Title 1"}
-        ];
-
-        // Function to show all counties
-        function showAllCounties() {
-            const tableBody = document.querySelector('#countiesTable tbody');
-            const showMoreRow = document.getElementById('showMoreRow');
-            const collapseRow = document.getElementById('collapseRow');
-            
-            // Hide the show more button row
-            showMoreRow.style.display = 'none';
-            
-            // Show the collapse button row
-            collapseRow.style.display = '';
-            
-            // Add all remaining counties
-            allCounties.forEach(county => {
-                const row = document.createElement('tr');
-                row.className = 'expanded-county-row'; // Add class to identify expanded rows
+                <div class="search-box">
+                    <input type="text" id="schoolsSearchInput" placeholder="Search counties..." onkeyup="searchSchoolsTable()">
+                </div>
                 
-                if (county.priorityClass) {
-                    row.classList.add(county.priorityClass);
-                    if (county.priorityClass === 'high-priority') {
-                        row.style.backgroundColor = '#d4edda';
-                        row.style.borderLeft = '4px solid #28a745';
-                    } else if (county.priorityClass === 'medium-priority') {
-                        row.style.backgroundColor = '#fff3cd';
-                        row.style.borderLeft = '4px solid #ffc107';
-                    }
-                } else if (county.num % 2 === 0) {
-                    row.style.backgroundColor = '#f8f9fa';
-                }
-                
-                const priorityColors = {
-                    'High': '#28a745',
-                    'Medium': '#ffc107',
-                    'Lower': '#6c757d'
-                };
-                
-                const priorityTextColors = {
-                    'High': 'white',
-                    'Medium': '#212529',
-                    'Lower': 'white'
-                };
-                
-                row.innerHTML = `
-                    <td style="padding: 12px 15px; border-bottom: 1px solid #ddd; font-weight: bold; color: #007bff; text-align: center;">${county.num}</td>
-                    <td style="padding: 12px 15px; border-bottom: 1px solid #ddd; font-weight: bold; color: #2c3e50;">${county.name}</td>
-                    <td style="padding: 12px 15px; border-bottom: 1px solid #ddd;">${county.seat}</td>
-                    <td style="padding: 12px 15px; border-bottom: 1px solid #ddd;">${county.region}</td>
-                    <td style="padding: 12px 15px; border-bottom: 1px solid #ddd;">
-                        <span style="background-color: ${priorityColors[county.priority]}; color: ${priorityTextColors[county.priority]}; padding: 3px 8px; border-radius: 12px; font-size: 0.8em; font-weight: bold;">${county.priority}</span>
-                    </td>
-                    <td style="padding: 12px 15px; border-bottom: 1px solid #ddd;">${county.status}</td>
-                `;
-                
-                // Insert before the collapse button row
-                tableBody.insertBefore(row, collapseRow);
-            });
-        }
-
-        // Function to collapse counties table
-        function collapseCounties() {
-            const tableBody = document.querySelector('#countiesTable tbody');
-            const showMoreRow = document.getElementById('showMoreRow');
-            const collapseRow = document.getElementById('collapseRow');
-            
-            // Remove all expanded county rows
-            const expandedRows = document.querySelectorAll('.expanded-county-row');
-            expandedRows.forEach(row => row.remove());
-            
-            // Hide the collapse button row
-            collapseRow.style.display = 'none';
-            
-            // Show the show more button row
-            showMoreRow.style.display = '';
-            
-            // Clear any search filter
-            const searchInput = document.getElementById('searchInput');
-            if (searchInput) {
-                searchInput.value = '';
-            }
-        }
-
-        // Search function for counties table
-        function searchTable() {
-            const input = document.getElementById("searchInput");
-            const filter = input.value.toUpperCase();
-            const table = document.getElementById("countiesTable");
-            const tr = table.getElementsByTagName("tr");
-            
-            for (let i = 1; i < tr.length; i++) { // Start from 1 to skip header
-                const td = tr[i].getElementsByTagName("td")[1]; // County name column
-                if (td) {
-                    const txtValue = td.textContent || td.innerText;
-                    if (txtValue.toUpperCase().indexOf(filter) > -1) {
-                        tr[i].style.display = "";
-                    } else {
-                        tr[i].style.display = "none";
-                    }
-                }
-            }
-        }
-    </script>
-</body>
-</html>
+                <table id="schoolsTable" class="schools-table">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>County Name</th>
+                            <th>County Seat</th>
+                            <th>Region</th>
+                            <th>Deployment Priority</th>
+                            <th>Title 1 / Rural Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="county-number">1</td>
+                            <td class="county-name">Alachua County</td>
+                            <td>Gainesville</td>
+                            <td>North Central</td>
+                            <td><span class="priority-tag priority-medium">Medium</span></td>
+                            <td>University town, moderate Title 1</td>
+                        </tr>
+                        <tr class="high-priority">
+                            <td class="county-number">2</td>
+                            <td class="county-name">Baker County</td>
+                            <td>Macclenny</td>
+                            <td>Northeast</td>
+                            <td><span class="priority-tag priority-high">High</span></td>
+                            <td>Rural county, high Title 1</td>
+                        </tr>
+                        <tr class="medium-priority">
+                            <td class="county-number">3</td>
+                            <td class="county-name">Bay County</td>
+                            <td>Panama City</td>
+                            <td>Panhandle</td>
+                            <td><span class="priority-tag priority-medium">Medium</span></td>
+                            <td>Coastal tourism hub, moderate Title 1</td>
+                        </tr>
+                        <tr class="high-priority">
+                            <td class="county-number">4</td>
+                            <td class="county-name">Bradford County</td>
+                            <td>Starke</td>
+                            <td>North Central</td>
+                            <td><span class="priority-tag priority-high">High</span></td>
+                            <td>Rural county, high Title 1</td>
+                        </tr>
+                        <tr>
+                            <td class="county-number">5</td>
+                            <td class="county-name">Brevard County</td>
+                            <td>Titusville</td>
+                            <td>East Central</td>
+                            <td><span class="priority-tag priority-low">Lower</span></td>
+                            <td>Space Coast, affluent areas, low Title 1</td>
+                        </tr>
+                        <tr>
+                            <td class="county-number">6</td>
+                            <td class="county-name">Broward County</td>
+                            <td>Fort Lauderdale</td>
+                            <td>Southeast</td>
+                            <td><span class="priority-tag priority-low">Lower</span></td>
+                            <td>Urban wealthy districts, selective Title 1</td>
+                        </tr>
+                        <tr class="high-priority">
+                            <td class="county-number">7</td>
+                            <td class="county-name">Calhoun County</td>
+                            <td>Blountstown</td>
+                            <td>Panhandle</td>
+                            <td><span class="priority-tag priority-high">High</span></td>
+                            <td>Rural county, high Title 1</td>
+                        </tr>
+                        <tr class="medium-priority">
+                            <td class="county-number">8</td>
+                            <td class="county-name">Charlotte County</td>
+                            <td>Punta Gorda</td>
+                            <td>Southwest</td>
+                            <td><span class="priority-tag priority-medium">Medium</span></td>
+                            <td>Mixed demographics, moderate Title 1</td>
+                        </tr>
+                        <tr class="medium-priority">
+                            <td class="county-number">9</td>
+                            <td class="county-name">Citrus County</td>
+                            <td>Inverness</td>
+                            <td>Central West</td>
+                            <td><span class="priority-tag priority-medium">Medium</span></td>
+                            <td>Rural/suburban mix, moderate Title 1</td>
+                        </tr>
+                        <tr>
+                            <td class="county-number">10</td>
+                            <td class="county-name">Clay County</td>
+                            <td>Green Cove Springs</td>
+                            <td>Northeast</td>
+                            <td><span class="priority-tag priority-low">Lower</span></td>
+                            <td>Jacksonville suburban, low Title 1</td>
+                        </tr>
+                        <tr>
+                            <td class="county-number">11</td>
+                            <td class="county-name">Collier County</td>
+                            <td>East Naples</td>
+                            <td>Southwest</td>
+                            <td><span class="priority-tag priority-low">Lower</span></td>
+                            <td>Wealthy Naples area, low Title 1</td>
+                        </tr>
+                        <tr class="high-priority">
+                            <td class="county-number">12</td>
+                            <td class="county-name">Columbia County</td>
+                            <td>Lake City</td>
+                            <td>North Central</td>
+                            <td><span class="priority-tag priority-high">High</span></td>
+                            <td>Rural county, high Title 1</td>
+                        </tr>
+                        <tr class="high-priority">
+                            <td class="county-number">13</td>
+                            <td class="county-name">DeSoto County</td>
+                            <td>Arcadia</td>
+                            <td>South Central</td>
+                            <td><span class="priority-tag priority-high">High</span></td>
+                            <td>Rural county, high Title 1</td>
+                        </tr>
+                        <tr class="high-priority">
+                            <td class="county-number">14</td>
+                            <td class="county-name">Dixie County</td>
+                            <td>Cross City</td>
+                            <td>North Central</td>
+                            <td><span class="priority-tag priority-high">High</span></td>
+                            <td>Rural county, high Title 1</td>
+                        </tr>
+                        <tr class="medium-priority">
+                            <td class="county-number">15</td>
+                            <td class="county-name">Duval County</td>
+                            <td>Jacksonville</td>
+                            <td>Northeast</td>
+                            <td><span class="priority-tag priority-medium">Medium</span></td>
+                            <td>Urban mix, significant Title 1 schools</td>
+                        </tr>
+                        <tr class="medium-priority">
+                            <td class="county-number">16</td>
+                            <td class="county-name">Escambia County</td>
+                            <td>Pensacola</td>
+                            <td>Panhandle</td>
+                            <td><span class="priority-tag priority-medium">Medium</span></td>
+                            <td>Mixed urban/rural, moderate Title 1</td>
+                        </tr>
+                        <tr class="medium-priority">
+                            <td class="county-number">17</td>
+                            <td class="county-name">Flagler County</td>
+                            <td>Bunnell</td>
+                            <td>Northeast</td>
+                            <td><span class="priority-tag priority-medium">Medium</span></td>
+                            <td>Growing area, moderate Title 1</td>
+                        </tr>
+                        <tr class="high-priority">
+                            <td class="county-number">18</td>
+                            <td class="county-name">Franklin County</td>
+                            <td>Apalachicola</td>
+                            <td>Panhandle</td>
+                            <td><span class="priority-tag priority-high">High</span></td>
+                            <td>Rural coastal, high Title 1</td>
+                        </tr>
+                        <tr class="high-priority">
+                            <td class="county-number">19</td>
+                            <td class="county-name">Gadsden County</td>
+                            <td>Quincy</td>
+                            <td>Panhandle</td>
+                            <td><span class="priority-tag priority-high">High</span></td>
+                            <td>Rural, 34.2% federal funding (highest in FL)</td>
+                        </tr>
+                        <tr class="high-priority">
+                            <td class="county-number">20</td>
+                            <td class="county-name">Gilchrist County</td>
+                            <td>Trenton</td>
+                            <td>North Central</td>
+                            <td><span class="priority-tag priority-high">High</span></td>
+                            <td>Rural county, high Title 1</td>
+                        </tr>
+                        <tr class="high-priority">
+                            <td class="county-number">21</td>
+                            <td class="county-name">Glades County</td>
+                            <td>Moore Haven</td>
+                            <td>South Central</td>
+                            <td><span class="priority-tag priority-high">High</span></td>
+                            <td>Rural county, high Title 1</td>
+                        </tr>
+                        <tr class="high-priority">
+                            <td class="county-number">22</td>
+                            <td class="county-name">Gulf County</td>
+                            <td>Port St. Joe</td>
+                            <td>Panhandle</td>
+                            <td><span class="priority-tag priority-high">High</span></td>
+                            <td>Rural coastal, high Title 1</td>
+                        </tr>
+                        <tr class="high-priority">
+                            <td class="county-number">23</td>
+                            <td class="county-name">Hamilton County</td>
+                            <td>Jasper</td>
+                            <td>North Central</td>
+                            <td><span class="priority-tag priority-high">High</span></td>
+                            <td>Rural county, high Title 1</td>
+                        </tr>
+                        <tr class="high-priority">
+                            <td class="county-number">24</td>
+                            <td class="county-name">Hardee County</td>
+                            <td>Wauchula</td>
+                            <td>South Central</td>
+                            <td><span class="priority-tag priority-high">High</span></td>
+                            <td>Rural county, high Title 1</td>
+                        </tr>
+                        <tr class="high-priority">
+                            <td class="county-number">25</td>
+                            <td class="county-name">Hendry County</td>
+                            <td>LaBelle</td>
+                            <td>Southwest</td>
+                            <td><span class="priority-tag priority-high">High</span></td>
+                            <td>Rural county, high Title 1</td>
+                        </tr>
+                        <tr class="medium-priority">
+                            <td class="county-number">26</td>
+                            <td class="county-name">Hernando County</td>
+                            <td>Brooksville</td>
+                            <td>Central West</td>
+                            <td><span class="priority-tag priority-medium">Medium</span></td>
+                            <td>Tampa suburban, moderate Title 1</td>
+                        </tr>
+                        <tr class="high-priority">
+                            <td class="county-number">27</td>
+                            <td class="county-name">Highlands County</td>
+                            <td>Sebring</td>
+                            <td>South Central</td>
+                            <td><span class="priority-tag priority-high">High</span></td>
+                            <td>Rural county, high Title 1</td>
+                        </tr>
+                        <tr class="medium-priority">
+                            <td class="county-number">28</td>
+                            <td class="county-name">Hillsborough County</td>
+                            <td>Tampa</td>
+                            <td>Central West</td>
+                            <td><span class="priority-tag priority-medium">Medium</span></td>
+                            <td>Urban mix, significant Title 1 schools</td>
+                        </tr>
+                        <tr class="high-priority">
+                            <td class="county-number">29</td>
+                            <td class="county-name">Holmes County</td>
+                            <td>Bonifay</td>
+                            <td>Panhandle</td>
+                            <td><span class="priority-tag priority-high">High</span></td>
+                            <td>Rural county, high Title 1</td>
+                        </tr>
+                        <tr>
+                            <td class="county-number">30</td>
+                            <td class="county-name">Indian River County</td>
+                            <td>Vero Beach</td>
+                            <td>Southeast</td>
+                            <td><span class="priority-tag priority-low">Lower</span></td>
+                            <td>Wealthy coastal area, low Title 1</td>
+                        </tr>
+                        <tr class="high-priority">
+                            <td class="county-number">31</td>
+                            <td class="county-name">Jackson County</td>
+                            <td>Marianna</td>
+                            <td>Panhandle</td>
+                            <td><span class="priority-tag priority-high">High</span></td>
+                            <td>Rural county, high Title 1</td>
+                        </tr>
+                        <tr class="high-priority">
+                            <td class="county-number">32</td>
+                            <td class="county-name">Jefferson County</td>
+                            <td>Monticello</td>
+                            <td>North Central</td>
+                            <td><span class="priority-tag priority-high">High</span></td>
+                            <td>Rural county, high Title 1</td>
+                        </tr>
+                        <tr class="high-priority">
+                            <td class="county-number">33</td>
+                            <td class="county-name">Lafayette County</td>
+                            <td>Mayo</td>
+                            <td>North Central</td>
+                            <td><span class="priority-tag priority-high">High</span></td>
+                            <td>Rural county, high Title 1</td>
+                        </tr>
+                        <tr class="medium-priority">
+                            <td class="county-number">34</td>
+                            <td class="county-name">Lake County</td>
+                            <td>Tavares</td>
+                            <td>Central</td>
+                            <td><span class="priority-tag priority-medium">Medium</span></td>
+                            <td>Orlando suburbs, moderate Title 1</td>
+                        </tr>
+                        <tr class="medium-priority">
+                            <td class="county-number">35</td>
+                            <td class="county-name">Lee County</td>
+                            <td>Fort Myers</td>
+                            <td>Southwest</td>
+                            <td><span class="priority-tag priority-medium">Medium</span></td>
+                            <td>Mixed demographics, moderate Title 1</td>
+                        </tr>
+                        <tr>
+                            <td class="county-number">36</td>
+                            <td class="county-name">Leon County</td>
+                            <td>Tallahassee</td>
+                            <td>North Central</td>
+                            <td><span class="priority-tag priority-low">Lower</span></td>
+                            <td>Capital city, university town, low Title 1</td>
+                        </tr>
+                        <tr class="high-priority">
+                            <td class="county-number">37</td>
+                            <td class="county-name">Levy County</td>
+                            <td>Bronson</td>
+                            <td>North Central</td>
+                            <td><span class="priority-tag priority-high">High</span></td>
+                            <td>Rural county, high Title 1</td>
+                        </tr>
+                        <tr class="high-priority">
+                            <td class="county-number">38</td>
+                            <td class="county-name">Liberty County</td>
+                            <td>Bristol</td>
+                            <td>Panhandle</td>
+                            <td><span class="priority-tag priority-high">High</span></td>
+                            <td>Rural county, smallest population (7,955)</td>
+                        </tr>
+                        <tr class="high-priority">
+                            <td class="county-number">39</td>
+                            <td class="county-name">Madison County</td>
+                            <td>Madison</td>
+                            <td>North Central</td>
+                            <td><span class="priority-tag priority-high">High</span></td>
+                            <td>Rural county, high Title 1</td>
+                        </tr>
+                        <tr class="medium-priority">
+                            <td class="county-number">40</td>
+                            <td class="county-name">Manatee County</td>
+                            <td>Bradenton</td>
+                            <td>Central West</td>
+                            <td><span class="priority-tag priority-medium">Medium</span></td>
+                            <td>Mixed demographics, moderate Title 1</td>
+                        </tr>
+                        <tr class="high-priority">
+                            <td class="county-number">41</td>
+                            <td class="county-name">Marion County</td>
+                            <td>Ocala</td>
+                            <td>Central</td>
+                            <td><span class="priority-tag priority-high">High</span></td>
+                            <td>Rural/suburban mix, high Title 1</td>
+                        </tr>
+                        <tr>
+                            <td class="county-number">42</td>
+                            <td class="county-name">Martin County</td>
+                            <td>Stuart</td>
+                            <td>Southeast</td>
+                            <td><span class="priority-tag priority-low">Lower</span></td>
+                            <td>Wealthy coastal area, low Title 1</td>
+                        </tr>
+                        <tr class="medium-priority">
+                            <td class="county-number">43</td>
+                            <td class="county-name">Miami-Dade County</td>
+                            <td>Miami</td>
+                            <td>Southeast</td>
+                            <td><span class="priority-tag priority-medium">Medium</span></td>
+                            <td>Urban mix, significant Title 1 schools</td>
+                        </tr>
+                        <tr class="high-priority">
+                            <td class="county-number">44</td>
+                            <td class="county-name">Monroe County</td>
+                            <td>Key West</td>
+                            <td>Southeast</td>
+                            <td><span class="priority-tag priority-high">High</span></td>
+                            <td>Rural Keys, high Title 1</td>
+                        </tr>
+                        <tr>
+                            <td class="county-number">45</td>
+                            <td class="county-name">Nassau County</td>
+                            <td>Fernandina Beach</td>
+                            <td>Northeast</td>
+                            <td><span class="priority-tag priority-low">Lower</span></td>
+                            <td>Affluent coastal area, low Title 1</td>
+                        </tr>
+                        <tr class="medium-priority">
+                            <td class="county-number">46</td>
+                            <td class="county-name">Okaloosa County</td>
+                            <td>Crestview</td>
+                            <td>Panhandle</td>
+                            <td><span class="priority-tag priority-medium">Medium</span></td>
+                            <td>Military base area, moderate Title 1</td>
+                        </tr>
+                        <tr class="high-priority">
+                            <td class="county-number">47</td>
+                            <td class="county-name">Okeechobee County</td>
+                            <td>Okeechobee</td>
+                            <td>South Central</td>
+                            <td><span class="priority-tag priority-high">High</span></td>
+                            <td>Rural county, high Title 1</td>
+                        </tr>
+                        <tr>
+                            <td class="county-number">48</td>
+                            <td class="county-name">Orange County</td>
+                            <td>Orlando</td>
+                            <td>Central</td>
+                            <td><span class="priority-tag priority-low">Lower</span></td>
+                            <td>Wealthy suburban districts, selective Title 1</td>
+                        </tr>
+                        <tr class="medium-priority">
+                            <td class="county-number">49</td>
+                            <td class="county-name">Osceola County</td>
+                            <td>Kissimmee</td>
+                            <td>Central</td>
+                            <td><span class="priority-tag priority-medium">Medium</span></td>
+                            <td>Mixed demographics, moderate Title 1</td>
+                        </tr>
+                        <tr>
+                            <td class="county-number">50</td>
+                            <td class="county-name">Palm Beach County</td>
+                            <td>West Palm Beach</td>
+                            <td>Southeast</td>
+                            <td><span class="priority-tag priority-low">Lower</span></td>
+                            <td>Wealthy coastal area, low Title 1</td>
+                        </tr>
+                        <tr class="medium-priority">
+                            <td class="county-number">51</td>
+                            <td class="county-name">Pasco County</td>
+                            <td>Dade City</td>
+                            <td>Central West</td>
+                            <td><span class="priority-tag priority-medium">Medium</span></td>
+                            <td>Tampa suburbs, moderate Title 1</td>
+                        </tr>
+                        <tr>
+                            <td class="county-number">52</td>
+                            <td class="county-name">Pinellas County</td>
+                            <td>Clearwater</td>
+                            <td>Central West</td>
+                            <td><span class="priority-tag priority-low">Lower</span></td>
+                            <td>Wealthy St. Pete/Clearwater area, low Title 1</td>
+                        </tr>
+                        <tr class="high-priority">
+                            <td class="county-number">53</td>
+                            <td class="county-name">Polk County</td>
+                            <td>Bartow</td>
+                            <td>Central</td>
+                            <td><span class="priority-tag priority-high">High</span></td>
+                            <td>21.0% federal funding (2nd highest in FL)</td>
+                        </tr>
+                        <tr class="high-priority">
+                            <td class="county-number">54</td>
+                            <td class="county-name">Putnam County</td>
+                            <td>Palatka</td>
+                            <td>Northeast</td>
+                            <td><span class="priority-tag priority-high">High</span></td>
+                            <td>Rural county, high Title 1</td>
+                        </tr>
+                        <tr>
+                            <td class="county-number">55</td>
+                            <td class="county-name">St. Johns County</td>
+                            <td>St. Augustine</td>
+                            <td>Northeast</td>
+                            <td><span class="priority-tag priority-low">Lower</span></td>
+                            <td>Affluent area, A-rated district, low Title 1</td>
+                        </tr>
+                        <tr class="medium-priority">
+                            <td class="county-number">56</td>
+                            <td class="county-name">St. Lucie County</td>
+                            <td>Fort Pierce</td>
+                            <td>Southeast</td>
+                            <td><span class="priority-tag priority-medium">Medium</span></td>
+                            <td>Mixed demographics, moderate Title 1</td>
+                        </tr>
+                        <tr class="medium-priority">
+                            <td class="county-number">57</td>
+                            <td class="county-name">Santa Rosa County</td>
+                            <td>Milton</td>
+                            <td>Panhandle</td>
+                            <td><span class="priority-tag priority-medium">Medium</span></td>
+                            <td>Military base area, moderate Title 1</td>
+                        </tr>
+                        <tr>
+                            <td class="county-number">58</td>
+                            <td class="county-name">Sarasota County</td>
+                            <td>Sarasota</td>
+                            <td>Central West</td>
+                            <td><span class="priority-tag priority-low">Lower</span></td>
+                            <td>Wealthy area, A-rated district, low Title 1</td>
+                        </tr>
+                        <tr>
+                            <td class="county-number">59</td>
+                            <td class="county-name">Seminole County</td>
+                            <td>Sanford</td>
+                            <td>Central</td>
+                            <td><span class="priority-tag priority-low">Lower</span></td>
+                            <td>Orlando suburbs, A-rated district, low Title 1</td>
+                        </tr>
+                        <tr class="high-priority">
+                            <td class="county-number">60</td>
+                            <td class="county-name">Sumter County</td>
+                            <td>Bushnell</td>
+                            <td>Central</td>
+                            <td><span class="priority-tag priority-high">High</span></td>
+                            <td>Rural county, high Title 1</td>
+                        </tr>
+                        <tr class="high-priority">
+                            <td class="county-number">61</td>
+                            <td class="county-name">Suwannee County</td>
+                            <td>Live Oak</td>
+                            <td>North Central</td>
+                            <td><span class="priority-tag priority-high">High</span></td>
+                            <td>Rural county, high Title 1</td>
+                        </tr>
+                        <tr class="high-priority">
+                            <td class="county-number">62</td>
+                            <td class="county-name">Taylor County</td>
+                            <td>Perry</td>
+                            <td>North Central</td>
+                            <td><span class="priority-tag priority-high">High</span></td>
+                            <td>Rural county, high Title 1</td>
+                        </tr>
+                        <tr class="high-priority">
+                            <td class="county-number">63</td>
+                            <td class="county-name">Union County</td>
+                            <td>Lake Butler</td>
+                            <td>North Central</td>
+                            <td><span class="priority-tag priority-high">High</span></td>
+                            <td>Rural county, smallest by area, high Title 1</td>
+                        </tr>
+                        <tr class="medium-priority">
+                            <td class="county-number">64</td>
+                            <td class="county-name">Volusia County</td>
+                            <td>DeLand</td>
+                            <td>Central East</td>
+                            <td><span class="priority-tag priority-medium">Medium</span></td>
+                            <td>Mixed demographics, moderate Title 1</td>
+                        </tr>
+                        <tr class="high-priority">
+                            <td class="county-number">65</td>
+                            <td class="county-name">Wakulla County</td>
+                            <td>Crawfordville</td>
+                            <td>North Central</td>
+                            <td><span class="priority-tag priority-high">High</span></td>
+                            <td>Rural county, high Title 1</td>
+                        </tr>
+                        <tr>
+                            <td class="county-number">66</td>
+                            <td class="county-name">Walton County</td>
+                            <td>DeFuniak Springs</td>
+                            <td>Panhandle</td>
+                            <td><span class="priority-tag priority-low">Lower</span></td>
+                            <td>Wealthy coastal area, A-rated district, low Title 1</td>
+                        </tr>
+                        <tr class="high-priority">
+                            <td class="county-number">67</td>
+                            <td class="county-name">Washington County</td>
+                            <td>Chipley</td>
+                            <td>Panhandle</td>
+                            <td><span class="priority-tag priority-high">High</span></td>
+                            <td>Rural county, high Title 1</td>
+                        </tr>
